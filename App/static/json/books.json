@@ -1,0 +1,143 @@
+[
+    {
+      "id": 1,
+      "title": "The Great Gatsby",
+      "author": "F. Scott Fitzgerald",
+      "genre": "Classic",
+      "price": 9.99
+    },
+    {
+      "id": 2,
+      "title": "To Kill a Mockingbird",
+      "author": "Harper Lee",
+      "genre": "Classic",
+      "price": 8.99
+    },
+    {
+      "id": 3,
+      "title": "1984",
+      "author": "George Orwell",
+      "genre": "Science Fiction",
+      "price": 10.99
+    },
+    {
+      "id": 4,
+      "title": "Pride and Prejudice",
+      "author": "Jane Austen",
+      "genre": "Classic",
+      "price": 7.99
+    },
+    {
+      "id": 5,
+      "title": "The Catcher in the Rye",
+      "author": "J.D. Salinger",
+      "genre": "Fiction",
+      "price": 6.99
+    },
+    {
+      "id": 6,
+      "title": "To the Lighthouse",
+      "author": "Virginia Woolf",
+      "genre": "Modernist",
+      "price": 9.99
+    },
+    {
+      "id": 7,
+      "title": "Brave New World",
+      "author": "Aldous Huxley",
+      "genre": "Science Fiction",
+      "price": 8.99
+    },
+    {
+      "id": 8,
+      "title": "Moby-Dick",
+      "author": "Herman Melville",
+      "genre": "Adventure",
+      "price": 11.99
+    },
+    {
+      "id": 9,
+      "title": "The Hobbit",
+      "author": "J.R.R. Tolkien",
+      "genre": "Fantasy",
+      "price": 10.99
+    },
+    {
+      "id": 10,
+      "title": "Frankenstein",
+      "author": "Mary Shelley",
+      "genre": "Gothic",
+      "price": 7.99
+    },
+    {
+      "id": 11,
+      "title": "The Lord of the Rings",
+      "author": "J.R.R. Tolkien",
+      "genre": "Fantasy",
+      "price": 14.99
+    },
+    {
+      "id": 12,
+      "title": "The Chronicles of Narnia",
+      "author": "C.S. Lewis",
+      "genre": "Fantasy",
+      "price": 12.99
+    },
+    {
+      "id": 13,
+      "title": "Harry Potter and the Philosopher's Stone",
+      "author": "J.K. Rowling",
+      "genre": "Fantasy",
+      "price": 9.99
+    },
+    {
+      "id": 14,
+      "title": "The Alchemist",
+      "author": "Paulo Coelho",
+      "genre": "Fiction",
+      "price": 8.99
+    },
+    {
+      "id": 15,
+      "title": "The Odyssey",
+      "author": "Homer",
+      "genre": "Epic",
+      "price": 7.99
+    },
+    {
+      "id": 16,
+      "title": "Hamlet",
+      "author": "William Shakespeare",
+      "genre": "Tragedy",
+      "price": 6.99
+    },
+    {
+      "id": 17,
+      "title": "The Picture of Dorian Gray",
+      "author": "Oscar Wilde",
+      "genre": "Gothic",
+      "price": 9.99
+    },
+    {
+      "id": 18,
+      "title": "The Adventures of Huckleberry Finn",
+      "author": "Mark Twain",
+      "genre": "Adventure",
+      "price": 8.99
+    },
+    {
+      "id": 19,
+      "title": "Alice's Adventures in Wonderland",
+      "author": "Lewis Carroll",
+      "genre": "Fantasy",
+      "price": 7.99
+    },
+    {
+      "id": 20,
+      "title": "Crime and Punishment",
+      "author": "Fyodor Dostoevsky",
+      "genre": "Crime",
+      "price": 10.99
+    }
+  ]
+  
