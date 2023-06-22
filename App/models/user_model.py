@@ -1,5 +1,4 @@
 from App.app import DB
-from sqlalchemy import func
 
 
 class UserModel(DB.Model):
@@ -11,9 +10,10 @@ class UserModel(DB.Model):
     email = DB.Column(DB.String(100), unique=True, nullable=False)
     password = DB.Column(DB.String(100), nullable=False)
 
-    date = DB.Column(DB.DateTime, default=func.now())
-
+    date = DB.Column(DB.Date, default=DB.func.current_date())
     no_of_books = DB.Column(DB.Integer, default=0)
+
+    user_book = DB.relationship("UserBookModel")
 
 
     def toObject(self) -> dict:

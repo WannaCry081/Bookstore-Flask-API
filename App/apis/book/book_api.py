@@ -1,7 +1,8 @@
 from flask import (
     Blueprint,
     request,
-    jsonify
+    jsonify,
+    json
 )
 from flask_jwt_extended import (
     jwt_required,
@@ -16,7 +17,7 @@ BOOK_API : Blueprint = Blueprint("BOOK_API", __name__)
 
 @BOOK_API.route("/", methods=["GET"])
 @jwt_required()
-def getBooks():
+def getBookList():
     return jsonify({})
 
 
