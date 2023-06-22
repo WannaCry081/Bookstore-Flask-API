@@ -1,143 +1,162 @@
 [
-    {
-      "id": 1,
-      "title": "The Great Gatsby",
-      "author": "F. Scott Fitzgerald",
-      "genre": "Classic",
-      "price": 9.99
-    },
-    {
-      "id": 2,
-      "title": "To Kill a Mockingbird",
-      "author": "Harper Lee",
-      "genre": "Classic",
-      "price": 8.99
-    },
-    {
-      "id": 3,
-      "title": "1984",
-      "author": "George Orwell",
-      "genre": "Science Fiction",
-      "price": 10.99
-    },
-    {
-      "id": 4,
-      "title": "Pride and Prejudice",
-      "author": "Jane Austen",
-      "genre": "Classic",
-      "price": 7.99
-    },
-    {
-      "id": 5,
-      "title": "The Catcher in the Rye",
-      "author": "J.D. Salinger",
-      "genre": "Fiction",
-      "price": 6.99
-    },
-    {
-      "id": 6,
-      "title": "To the Lighthouse",
-      "author": "Virginia Woolf",
-      "genre": "Modernist",
-      "price": 9.99
-    },
-    {
-      "id": 7,
-      "title": "Brave New World",
-      "author": "Aldous Huxley",
-      "genre": "Science Fiction",
-      "price": 8.99
-    },
-    {
-      "id": 8,
-      "title": "Moby-Dick",
-      "author": "Herman Melville",
-      "genre": "Adventure",
-      "price": 11.99
-    },
-    {
-      "id": 9,
-      "title": "The Hobbit",
-      "author": "J.R.R. Tolkien",
-      "genre": "Fantasy",
-      "price": 10.99
-    },
-    {
-      "id": 10,
-      "title": "Frankenstein",
-      "author": "Mary Shelley",
-      "genre": "Gothic",
-      "price": 7.99
-    },
-    {
-      "id": 11,
-      "title": "The Lord of the Rings",
-      "author": "J.R.R. Tolkien",
-      "genre": "Fantasy",
-      "price": 14.99
-    },
-    {
-      "id": 12,
-      "title": "The Chronicles of Narnia",
-      "author": "C.S. Lewis",
-      "genre": "Fantasy",
-      "price": 12.99
-    },
-    {
-      "id": 13,
-      "title": "Harry Potter and the Philosopher's Stone",
-      "author": "J.K. Rowling",
-      "genre": "Fantasy",
-      "price": 9.99
-    },
-    {
-      "id": 14,
-      "title": "The Alchemist",
-      "author": "Paulo Coelho",
-      "genre": "Fiction",
-      "price": 8.99
-    },
-    {
-      "id": 15,
-      "title": "The Odyssey",
-      "author": "Homer",
-      "genre": "Epic",
-      "price": 7.99
-    },
-    {
-      "id": 16,
-      "title": "Hamlet",
-      "author": "William Shakespeare",
-      "genre": "Tragedy",
-      "price": 6.99
-    },
-    {
-      "id": 17,
-      "title": "The Picture of Dorian Gray",
-      "author": "Oscar Wilde",
-      "genre": "Gothic",
-      "price": 9.99
-    },
-    {
-      "id": 18,
-      "title": "The Adventures of Huckleberry Finn",
-      "author": "Mark Twain",
-      "genre": "Adventure",
-      "price": 8.99
-    },
-    {
-      "id": 19,
-      "title": "Alice's Adventures in Wonderland",
-      "author": "Lewis Carroll",
-      "genre": "Fantasy",
-      "price": 7.99
-    },
-    {
-      "id": 20,
-      "title": "Crime and Punishment",
-      "author": "Fyodor Dostoevsky",
-      "genre": "Crime",
-      "price": 10.99
-    }
-  ]
-  
+  {
+    "id": 1,
+    "title": "To Kill a Mockingbird",
+    "author": "Harper Lee",
+    "genre": "Fiction",
+    "description": "A classic novel about racial injustice and the loss of innocence in a small Southern town.",
+    "price": 9.99
+  },
+  {
+    "id": 2,
+    "title": "1984",
+    "author": "George Orwell",
+    "genre": "Science Fiction",
+    "description": "A dystopian novel depicting a totalitarian regime and the struggle for freedom and individuality.",
+    "price": 12.99
+  },
+  {
+    "id": 3,
+    "title": "Pride and Prejudice",
+    "author": "Jane Austen",
+    "genre": "Romance",
+    "description": "A classic love story set in the English countryside, exploring themes of class, marriage, and societal expectations.",
+    "price": 8.99
+  },
+  {
+    "id": 4,
+    "title": "The Great Gatsby",
+    "author": "F. Scott Fitzgerald",
+    "genre": "Fiction",
+    "description": "A tale of wealth, love, and the American Dream in the Roaring Twenties.",
+    "price": 10.99
+  },
+  {
+    "id": 5,
+    "title": "To the Lighthouse",
+    "author": "Virginia Woolf",
+    "genre": "Fiction",
+    "description": "A stream-of-consciousness novel that explores the inner lives of its characters and the passage of time.",
+    "price": 9.99
+  },
+  {
+    "id": 6,
+    "title": "Brave New World",
+    "author": "Aldous Huxley",
+    "genre": "Science Fiction",
+    "description": "A dystopian novel set in a future world where conformity and pleasure are prioritized.",
+    "price": 11.99
+  },
+  {
+    "id": 7,
+    "title": "Jane Eyre",
+    "author": "Charlotte Bronte",
+    "genre": "Romance",
+    "description": "A Gothic novel exploring the journey of a young woman's search for love, independence, and belonging.",
+    "price": 8.99
+  },
+  {
+    "id": 8,
+    "title": "The Catcher in the Rye",
+    "author": "J.D. Salinger",
+    "genre": "Fiction",
+    "description": "A coming-of-age story that follows a teenage protagonist's disillusionment with the adult world.",
+    "price": 9.99
+  },
+  {
+    "id": 9,
+    "title": "Moby-Dick",
+    "author": "Herman Melville",
+    "genre": "Adventure",
+    "description": "An epic tale of Captain Ahab's obsession with hunting down the great white whale.",
+    "price": 13.99
+  },
+  {
+    "id": 10,
+    "title": "The Lord of the Rings",
+    "author": "J.R.R. Tolkien",
+    "genre": "Fantasy",
+    "description": "A high fantasy trilogy that follows the quest to destroy a powerful ring and save Middle-earth from darkness.",
+    "price": 15.99
+  },
+  {
+    "id": 11,
+    "title": "The Hobbit",
+    "author": "J.R.R. Tolkien",
+    "genre": "Fantasy",
+    "description": "A fantasy adventure about a hobbit's journey to reclaim a treasure guarded by a dragon.",
+    "price": 11.99
+  },
+  {
+    "id": 12,
+    "title": "Harry Potter and the Sorcerer's Stone",
+    "author": "J.K. Rowling",
+    "genre": "Fantasy",
+    "description": "The first book in the popular Harry Potter series, introducing the magical world of Hogwarts.",
+    "price": 10.99
+  },
+  {
+    "id": 13,
+    "title": "The Alchemist",
+    "author": "Paulo Coelho",
+    "genre": "Fiction",
+    "description": "A philosophical novel about a young shepherd's journey to find his personal legend.",
+    "price": 9.99
+  },
+  {
+    "id": 14,
+    "title": "The Da Vinci Code",
+    "author": "Dan Brown",
+    "genre": "Mystery",
+    "description": "A thriller that combines art, history, and religion in a quest for a hidden secret.",
+    "price": 12.99
+  },
+  {
+    "id": 15,
+    "title": "The Odyssey",
+    "author": "Homer",
+    "genre": "Epic",
+    "description": "An ancient Greek epic poem that follows the hero Odysseus' journey back home after the Trojan War.",
+    "price": 11.99
+  },
+  {
+    "id": 16,
+    "title": "Frankenstein",
+    "author": "Mary Shelley",
+    "genre": "Gothic",
+    "description": "A novel exploring themes of creation, identity, and the consequences of playing god.",
+    "price": 9.99
+  },
+  {
+    "id": 17,
+    "title": "The Picture of Dorian Gray",
+    "author": "Oscar Wilde",
+    "genre": "Gothic",
+    "description": "A story about a man whose portrait ages while he remains forever young, capturing the essence of his corruption.",
+    "price": 8.99
+  },
+  {
+    "id": 18,
+    "title": "The Chronicles of Narnia",
+    "author": "C.S. Lewis",
+    "genre": "Fantasy",
+    "description": "A series of fantasy novels set in the magical world of Narnia and the adventures of its inhabitants.",
+    "price": 14.99
+  },
+  {
+    "id": 19,
+    "title": "Gone with the Wind",
+    "author": "Margaret Mitchell",
+    "genre": "Historical Fiction",
+    "description": "A historical novel set during the American Civil War, depicting the struggles and romances of its characters.",
+    "price": 11.99
+  },
+  {
+    "id": 20,
+    "title": "The Hunger Games",
+    "author": "Suzanne Collins",
+    "genre": "Science Fiction",
+    "description": "A dystopian series where young tributes fight for survival in a televised event.",
+    "price": 10.99
+  }
+]
