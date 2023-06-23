@@ -5,6 +5,9 @@ from flask_bcrypt import Bcrypt
 from flask_cors import CORS
 from App.config import Config
 
+import json
+import os
+
 
 DB : SQLAlchemy = SQLAlchemy()
 BCRYPT : Bcrypt = Bcrypt()
@@ -36,10 +39,37 @@ def create_bookstore_app(config_class : Config = Config) -> Flask:
 
     from App.models import (
         UserModel,
-        BookModel
+        BookModel,
+        UserBookModel
     )
 
     with my_app.app_context():
         DB.create_all()
+        load_book_list()
 
     return my_app
+
+
+def load_book_list() -> None:
+
+    from App.models import BookModel
+
+    with open("App/static/json/books.json", "r") as file:
+        books = json.load(file)
+    
+        for data in books:
+            book : BookModel = BookModel.query.filter_by(title = data["title"]).first()
+            if not book:
+                DB.session.add(BookModel(
+                    title = data["title"],
+                    author = data["author"],
+                    genre = data["genre"],
+                    description = data["description"],
+                    price = data["price"]
+                ))
+                DB.session.commit()
+            else:
+                continue
+    
+        file.close()
+    return
