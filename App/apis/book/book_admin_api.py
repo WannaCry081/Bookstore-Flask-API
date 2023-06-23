@@ -91,7 +91,45 @@ def createBook():
 @BOOK_ADMIN_API.route("/<int:book_id>/<book_title>/", methods=["PUT"])
 @jwt_required()
 def updateBookDetail(book_id : int, book_title : str):
-    return jsonify({})
+    try:
+        access_token = get_jwt_identity()
+        user : UserModel = UserModel.query.filter_by(email = access_token).first()
+
+        if user.id == 1:    
+
+            description = request.form["description"]
+            price = request.form["price"]
+
+            book : BookModel = BookModel.query.filter_by(
+                id = book_id,
+                title = book_title
+            ).first()
+
+            if not book:
+                return jsonify({
+                    "message" : "Book does not Exists",
+                    "status" : 404
+                }), 404
+
+            book.description = description
+            book.price = price 
+            DB.session.commit()
+
+            return jsonify({
+                "message" : "Successfully Updated",
+                "status" : 200
+            }), 200
+
+    except:
+        return jsonify({
+            "message" : "Internal Server Error",
+            "status" : 500
+        }), 500
+    
+    return jsonify({
+        "status" : "Page does not Exists",
+        "status" : 404
+    }), 404
 
 
 @BOOK_ADMIN_API.route("/<int:book_id>/<book_title>/", methods=["DELETE"])
@@ -108,10 +146,16 @@ def deleteBook(book_id : int, book_title : str):
                 title = book_title
             ).first()
 
+            if not book:
+                return jsonify({
+                    "message" : "Book does not Exists", 
+                    "status" : 404
+                }), 404
+
             userBook : UserBookModel = UserBookModel.query.filter_by(
                 book_id = book_id
             ).all()
-
+            
             DB.session.delete(userBook)
             DB.session.delete(book)
             DB.session.commit()
