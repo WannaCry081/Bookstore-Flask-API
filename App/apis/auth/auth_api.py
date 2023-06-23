@@ -130,23 +130,12 @@ def signInUser():
 
 
 @AUTH_API.route("/signout/", methods=["POST"])
-@jwt_required()
 def signOutUser():
+    response = jsonify({
+        "message" : "Successfully Logged Out",
+        "status" : 200
+    })
+    unset_jwt_cookies(response)
+    unset_access_cookies(response)
 
-    access_token = get_jwt_identity()
-    user : UserModel = UserModel.query.filter_by(email = access_token).first()
-
-    if user:
-        response = jsonify({
-            "message" : "Successfully Logged Out",
-            "status" : 200
-        })
-        unset_jwt_cookies(response)
-        unset_access_cookies(response)
-
-        return response, 200
-    
-    return jsonify({
-        "message" : "User does not Exists",
-        "status" : 404,
-    }), 404
+    return response, 200
