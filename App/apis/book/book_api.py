@@ -165,12 +165,15 @@ def deleteUserBook(book_id : int, book_title : str):
                 title = book_title
             ).first()
 
-            userBook : UserBookModel = UserBookModel.query.filter_by(
+            userBooks : UserBookModel = UserBookModel.query.filter_by(
                 user_id = user.id,
                 book_id = book.id
-            ).first()
-
-            DB.session.delete(userBook)
+            ).all()
+            
+            if userBooks:
+                for userBook in userBooks:
+                    DB.session.delete(userBook)
+                    
             DB.session.commit()
 
             return jsonify({

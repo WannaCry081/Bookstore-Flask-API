@@ -152,11 +152,14 @@ def deleteBook(book_id : int, book_title : str):
                     "status" : 404
                 }), 404
 
-            userBook : UserBookModel = UserBookModel.query.filter_by(
+            userBooks : UserBookModel = UserBookModel.query.filter_by(
                 book_id = book_id
             ).all()
-            
-            DB.session.delete(userBook)
+
+            if userBooks:
+                for userBook in userBooks:
+                    DB.session.delete(userBook)
+                    
             DB.session.delete(book)
             DB.session.commit()
 
