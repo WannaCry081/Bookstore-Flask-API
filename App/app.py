@@ -6,7 +6,6 @@ from flask_cors import CORS
 from App.config import Config
 
 import json
-import os
 
 
 DB : SQLAlchemy = SQLAlchemy()
@@ -51,7 +50,10 @@ def create_bookstore_app(config_class : Config = Config) -> Flask:
 
 
 def load_book_list() -> None:
-
+    """
+    Inserting preloaded books in the `books` table for user manipulation
+    you can also add books in the `App/static/json/books.json` 
+    """
     from App.models import BookModel
 
     with open("App/static/json/books.json", "r") as file:

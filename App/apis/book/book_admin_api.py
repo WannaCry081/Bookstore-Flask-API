@@ -95,6 +95,8 @@ def updateBookDetail(book_id : int, book_title : str):
         access_token = get_jwt_identity()
         user : UserModel = UserModel.query.filter_by(email = access_token).first()
 
+        # Condition is not Secure
+        # Need to change this in the Future
         if user.id == 1:    
             data = request.get_json()
             description = data["description"]
@@ -142,7 +144,8 @@ def deleteBook(book_id : int, book_title : str):
         access_token = get_jwt_identity()
         user : UserModel = UserModel.query.filter_by(email = access_token).first()
         
-        # Not Secured, Must Change Condition
+        # Condition is not Secure
+        # Need to change this in the Future
         if user.id == 1:
             book : BookModel = BookModel.query.filter_by(
                 id = book_id, 

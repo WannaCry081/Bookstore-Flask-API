@@ -22,6 +22,8 @@ def getUserAccounts():
         access_token = get_jwt_identity()
         admin : UserModel = UserModel.query.filter_by(email = access_token).first()
 
+        # Condition is not Secure
+        # Need to change this in the Future
         if admin.id == 1:
             user_list = [] 
             users : UserModel = UserModel.query.all()
@@ -53,6 +55,8 @@ def deleteAccounts(user_id : int, username : str, email : str):
         access_token = get_jwt_identity()
         admin : UserModel = UserModel.query.filter_by(email = access_token).first()
         
+        # Condition is not Secure
+        # Need to change this in the Future
         if admin.id == 1:
             
             user : UserModel = UserModel.query.filter_by(
