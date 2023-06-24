@@ -129,6 +129,7 @@ def addUserBook():
                 user_id = user.id,
                 book_id = book.id
             )
+            user.no_of_books = int(user.no_of_books) + 1
 
             DB.session.add(userBook)
             DB.session.commit()
@@ -151,7 +152,7 @@ def addUserBook():
 
 
 
-@BOOK_API.route("/user-book-list/<int:book_id>/<book_title>/", methods=["DELETE"])
+@BOOK_API.route("/<int:book_id>/<book_title>/", methods=["DELETE"])
 @jwt_required()
 def deleteUserBook(book_id : int, book_title : str):
     try:
@@ -165,15 +166,13 @@ def deleteUserBook(book_id : int, book_title : str):
                 title = book_title
             ).first()
 
-            userBooks : UserBookModel = UserBookModel.query.filter_by(
+            userBook : UserBookModel = UserBookModel.query.filter_by(
                 user_id = user.id,
                 book_id = book.id
-            ).all()
+            ).first()
             
-            if userBooks:
-                for userBook in userBooks:
-                    DB.session.delete(userBook)
-                    
+            user.no_of_books = int(user.no_of_books) - 1
+            DB.session.delete(userBook)
             DB.session.commit()
 
             return jsonify({

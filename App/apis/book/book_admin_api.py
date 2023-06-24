@@ -96,9 +96,9 @@ def updateBookDetail(book_id : int, book_title : str):
         user : UserModel = UserModel.query.filter_by(email = access_token).first()
 
         if user.id == 1:    
-
-            description = request.form["description"]
-            price = request.form["price"]
+            data = request.get_json()
+            description = data["description"]
+            price = data["price"]
 
             book : BookModel = BookModel.query.filter_by(
                 id = book_id,
@@ -110,9 +110,12 @@ def updateBookDetail(book_id : int, book_title : str):
                     "message" : "Book does not Exists",
                     "status" : 404
                 }), 404
+            
+            if description:
+                book.description = description
 
-            book.description = description
-            book.price = price 
+            if price:
+                book.price = price 
             DB.session.commit()
 
             return jsonify({

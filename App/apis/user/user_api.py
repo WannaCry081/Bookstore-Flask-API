@@ -7,7 +7,9 @@ from flask import (
 )
 from flask_jwt_extended import (
     jwt_required,
-    get_jwt_identity
+    get_jwt_identity,
+    unset_jwt_cookies,
+    unset_access_cookies
 )
 
 
@@ -49,16 +51,20 @@ def updateProfile():
         user : UserModel = UserModel.query.filter_by(email = access_token).first()
 
         if user:
-            username = request.form["username"]
-            bio = request.form["bio"]
+            data = request.get_json()
+            username = data["username"]
+            bio = data["bio"]
 
-            if not user or len(user) < 4:
-                return jsonify({
-                    "message" : "Invalid Username", 
-                    "status" : 400
-                }), 400
             
-            user.username = username
+            if username:
+                if len(username) < 4:
+                    return jsonify({
+                        "message" : "Invalid Username", 
+                        "status" : 400
+                    }), 400
+                
+                user.username = username
+                    
             user.bio = bio
             DB.session.commit()
             return jsonify({
@@ -78,35 +84,37 @@ def updateProfile():
     }), 404
 
 
-@USER_API.route("/", methods=["PUT"])
+@USER_API.route("/", methods=["POST"])
 @jwt_required()
 def updatePassword():
     try:
         access_token = get_jwt_identity()
-        user : UserModel = UserModel.query.fitler_by(email = access_token).first()
+        user : UserModel = UserModel.query.filter_by(email = access_token).first()
 
         if user:
             old_password = request.form["old_password"]
             new_password = request.form["new_password"]
 
-            if not BCRYPT.check_password_hash(user.password, old_password):
+            if BCRYPT.check_password_hash(user.password, old_password):
+                
+                if len(new_password) < 6:
+                    return jsonify({
+                        "message" : "Password must be at least 6 characters long", 
+                        "status" : 400
+                    }), 400
+            
+                user.password = BCRYPT.generate_password_hash(new_password)
+                DB.session.commit()
+                return jsonify({
+                    "message" : "Successfully Updated Password",
+                    "status" : 200
+                }), 200
+        
+            else:
                 return jsonify({
                     "message" : "Incorrect Password",
                     "status" : 400
                 }), 400
-            
-            if len(new_password) < 6:
-                return jsonify({
-                    "message" : "Password must be at least 6 characters long", 
-                    "status" : 400
-                }), 400
-            
-            user.password = BCRYPT.generate_password_hash(new_password)
-            DB.session.commit()
-            return jsonify({
-                "message" : "Successfully Updated Password",
-                "status" : 200
-            }), 200
 
     except:
         return jsonify({
@@ -128,6 +136,11 @@ def deleteProfile():
         user : UserModel = UserModel.query.filter_by(email = access_token).first()
 
         if user:
+            response = jsonify({
+                "message" : "Successfully Deleted",
+                "status" : 200
+            })
+
             userBooks : UserBookModel = UserBookModel.query.filter_by(
                 user_id = user.id
             ).all()
@@ -139,11 +152,10 @@ def deleteProfile():
             DB.session.delete(user)
             DB.session.commit()
 
-            return jsonify({
-                "message" : "Successfully Deleted",
-                "status" : 200
-            }), 200
+            unset_access_cookies(response)
+            unset_jwt_cookies(response)
 
+            return response, 200
 
     except:
         return jsonify({

@@ -1,5 +1,5 @@
 from App.app import DB
-from App.models import UserModel
+from App.models import UserModel, UserBookModel
 from flask import (
     Blueprint,
     jsonify
@@ -20,12 +20,17 @@ USER_ADMIN_API : Blueprint = Blueprint("USER_ADMIN_API", __name__)
 def getUserAccounts():
     try:
         access_token = get_jwt_identity()
-        user : UserModel = UserModel.query.filter_by(email = access_token).first()
+        admin : UserModel = UserModel.query.filter_by(email = access_token).first()
 
-        if user.id == 1:
-            user = UserModel.query.all()
+        if admin.id == 1:
+            user_list = [] 
+            users : UserModel = UserModel.query.all()
+
+            for user in users:
+                user_list.append(user.toObject())
+
             return jsonify({
-                "users" : user.toObject(),
+                "users" : user_list,
                 "status" : 200
             }), 200
 
@@ -46,21 +51,26 @@ def getUserAccounts():
 def deleteAccounts(user_id : int, username : str, email : str):
     try:    
         access_token = get_jwt_identity()
-        user : UserModel = UserModel.query.filter_by(email = access_token).first()
+        admin : UserModel = UserModel.query.filter_by(email = access_token).first()
         
-        if user.id == 1:
+        if admin.id == 1:
             
             user : UserModel = UserModel.query.filter_by(
                 id = user_id,
                 username = username,
                 email = email
-            )
+            ).first()
 
             if not user:
                 return jsonify({
                     "message" : "User does not Exists",
                     "status" : 404
                 }), 404
+            
+            userBooks : UserBookModel = UserBookModel.query.filter_by(user_id = user.id).all()
+            if userBooks:
+                for userBook in userBooks:  
+                    DB.session.delete(userBook)
             
             DB.session.delete(user)
             DB.session.commit()

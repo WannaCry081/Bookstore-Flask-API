@@ -9,6 +9,7 @@ class UserModel(DB.Model):
     username = DB.Column(DB.String(100), unique=True, nullable=False)
     email = DB.Column(DB.String(100), unique=True, nullable=False)
     password = DB.Column(DB.String(100), nullable=False)
+    bio =  DB.Column(DB.Text)
 
     date = DB.Column(DB.Date, default=DB.func.current_date())
     no_of_books = DB.Column(DB.Integer, default=0)
@@ -21,7 +22,8 @@ class UserModel(DB.Model):
             "id" : self.id,
             "email" : self.email,
             "username" : self.username,
-            "No. of Books" : self.no_of_books
+            "No. of Books" : self.no_of_books,
+            "bio" :self.bio
         }
     
 
