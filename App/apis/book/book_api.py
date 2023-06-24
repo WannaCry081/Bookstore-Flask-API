@@ -70,7 +70,7 @@ def getBookDetail(book_id : int, book_title : str):
 
 # USER ROUTES ================================================
 
-@BOOK_API.route("/user-book-list/", methods=["GET"])
+@BOOK_API.route("/booklist/", methods=["GET"])
 @jwt_required()
 def getUserBookList():
 
@@ -107,7 +107,7 @@ def getUserBookList():
     }), 404
 
 
-@BOOK_API.route("/user-book-list/", methods=["POST"])
+@BOOK_API.route("/booklist/", methods=["POST"])
 @jwt_required()
 def addUserBook():
     try:
