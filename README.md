@@ -120,3 +120,4 @@ Contributions to the project are welcome. If you find any issues or have any sug
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
+
