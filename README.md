@@ -117,3 +117,6 @@ The default database used in this project is SQLite3. However, you can also use 
 
 Contributions to the project are welcome. If you find any issues or have any suggestions for improvement, feel free to submit a pull request or open an issue on the repository.
 
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
