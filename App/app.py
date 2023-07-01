@@ -5,7 +5,6 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_jwt_extended import JWTManager
 from flask_bcrypt import Bcrypt
 from flask_cors import CORS
-from App.config import Config
 
 import json
 
@@ -16,10 +15,10 @@ BCRYPT : Bcrypt = Bcrypt()
 MALLOW : Marshmallow = Marshmallow()
 
 
-def create_bookstore_app(config_class : Config = Config) -> Flask:
+def create_bookstore_app(environment) -> Flask:
 
     my_app : Flask = Flask(__name__)
-    my_app.config.from_object(config_class)
+    my_app.config.from_object(environment)
 
     API : Api = Api(my_app)
     DB.init_app(my_app)
@@ -58,7 +57,7 @@ def create_bookstore_app(config_class : Config = Config) -> Flask:
 
     API.add_resource(BookResource, "/api/book")
     API.add_resource(BookDetailResource, "/api/book/<int:book_id>/<book_title>")
-    API.add_resource(UserBookResource, "api/book/user/<int:user_id>")
+    API.add_resource(UserBookResource, "/api/book/user/<int:user_id>")
 
     API.add_resource(AdminUserResource, "/api/admin/user")
     API.add_resource(AdminBookResource, "/api/admin/book")

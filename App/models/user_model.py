@@ -18,6 +18,11 @@ class UserModel(DB.Model):
     user_book = DB.relationship("UserBookModel")
 
 
+    def __init__(self, username : str, email : str, password : str):
+        self.username = username
+        self.email = email
+        self.password = password
+        
     def toObject(self) -> dict:
         return {
             "id" : self.id,

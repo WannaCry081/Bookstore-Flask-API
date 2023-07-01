@@ -6,5 +6,6 @@ App/apis/user/__pycache__
 App/apis/book/__pycache__
 App/models/__pycache__
 App/utils/__pycache__
+Config/__pycache__
 
 instance
