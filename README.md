@@ -16,7 +16,7 @@ Welcome to the Virtual Bookstore API, a robust and user-friendly solution for ma
 1. Clone the repository:
 
 ```
-git clone https://github.com/sansqed/project-ceboom.git
+git clone https://github.com/TheDayDreamer01/Bookstore-Flask-API.git
 cd bookstore-flask-api
 ```
 
@@ -49,68 +49,68 @@ pip install -r requirements.txt
 5. Run the application:
 
 ```
-python manage.py runserver
+python server.py
 ```
 
-The default database used in this project is SQLite3. However, you can also use it in MySQL by configuring the `config.py` in the `App/config.py` directory. Moreover, the API should now be accessible at `http://localhost:5000`.
+The default database used in this project is SQLite3. However, you can also use it in MySQL by configuring the `config.py` in the `Config/config.py` directory. Moreover, the API should now be accessible at `http://localhost:5000`.
 
 
 ## API Routes
 
-- **POST /api/auth/signin/**
+- **POST /api/auth/signin**
   - User sign-in with email and password.
   - Returns a JWT token for authentication.
 
-- **POST /api/auth/signup/**
+- **POST /api/auth/signup**
   - User sign-up with username, email, and password.
   - Creates a new user in the database.
 
-- **POST /api/auth/signout/**
+- **POST /api/auth/signout**
   - User sign-out.
   - Invalidates the JWT token.
 
-- **GET /api/book/**
+- **GET /api/book**
   - Get a list of all books.
   - No authentication required.
 
-- **GET /api/book/<book_id>/<book_title>/**
+- **GET /api/book/<book_id>/<book_title>**
   - Get details of a specific book.
   - No authentication required.
 
-- **GET /api/book/booklist/**
+- **GET /api/book/user/<user_id>**
   - Get the authenticated user's book list.
 
-- **POST /api/book/booklist/**
+- **POST /api/book/user/<user_id>**
   - Add a book to the authenticated user's book list.
 
-- **DELETE /api/book/<book_id>/<book_title>/**
+- **DELETE /api/book/<book_id>**
   - Delete a book from the authenticated user's book list.
 
-- **GET /api/user/**
+- **GET /api/user/<user_id>**
   - Get the authenticated user's profile.
 
-- **PUT /api/user/**
+- **PUT /api/user/<user_id>**
   - Update the authenticated user's profile.
 
-- **POST /api/user/**
+- **POST /api/user/<user_id>**
   - Update the authenticated user's password.
 
-- **DELETE /api/user/**
+- **DELETE /api/user/<user_id>**
   - Delete the authenticated user's account.
 
-- **POST /api/admin/book/**
+- **POST /api/admin/book**
   - Add a book (admin only).
 
-- **PUT /api/admin/book/<book_id>/<book_title>/**
+- **PUT /api/admin/book**
   - Update a book (admin only).
 
-- **DELETE /api/admin/book/<book_id>/<book_title>/**
+- **DELETE /api/admin/book**
   - Delete a book (admin only).
 
-- **GET /api/admin/user/**
+- **GET /api/admin/user**
   - Get a list of all users (admin only).
 
-- **DELETE /api/admin/user/<user_id>/<username>/<email>/**
+- **DELETE /api/admin/user**
   - Delete a user (admin only).
 
 ## Contributing
