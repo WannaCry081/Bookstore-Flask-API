@@ -1,5 +1,8 @@
 from App.app import DB
-from App.models import UserModel, UserBookModel, users_schema
+from App.models import (
+    UserModel, 
+    users_schema
+)
 
 from flask_jwt_extended import (
     jwt_required,

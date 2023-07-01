@@ -15,6 +15,15 @@ class BookModel(DB.Model):
 
     user_book = DB.relationship("UserBookModel")
 
+    def __init__(self, title : str, author : str, genre : str, description : str, price : float):
+        self.title = title
+        self.author = author
+        self.genre = genre
+        self.description = description
+        self.price = price 
+    
+    def __repr__(self) -> str:
+        return "<Book %r>"%self.title
 
     def toObject(self) -> dict:
         return {
@@ -26,10 +35,6 @@ class BookModel(DB.Model):
             "price" : self.price
         }
     
-    
-    def __repr__(self) -> str:
-        return "<Book %r>"%self.title
-
 
 class BookSchema(MALLOW.Schema):
 
