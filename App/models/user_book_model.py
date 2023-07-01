@@ -1,4 +1,5 @@
-from App.app import DB
+from App.app import DB, MALLOW
+from marshmallow import fields
 
 
 class UserBookModel(DB.Model):
@@ -12,3 +13,14 @@ class UserBookModel(DB.Model):
 
     def __repr__(self) -> str:
         return "<UserBooks %r>"%self.id
+
+
+class UserBookSchema(MALLOW.Schema):
+
+    class Meta:
+        model : UserBookModel = UserBookModel
+        fields : tuple = ("id", "user_id", "book_id") 
+
+
+userbook_schema : UserBookSchema = UserBookSchema()
+userbooks_schema : UserBookSchema = UserBookSchema(many=True)

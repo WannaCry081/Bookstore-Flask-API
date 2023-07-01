@@ -1,4 +1,5 @@
-from App.app import DB
+from App.app import DB, MALLOW
+from marshmallow import fields
 
 
 class BookModel(DB.Model):
@@ -29,3 +30,23 @@ class BookModel(DB.Model):
     def __repr__(self) -> str:
         return "<Book %r>"%self.title
 
+
+class BookSchema(MALLOW.Schema):
+
+    class Meta:
+        model : BookModel = BookModel
+        fields : tuple = ("id", "title", "author", "genre", "description",
+                            "price", "date")
+
+    id = fields.Integer()
+    title = fields.String()
+    author = fields.String()
+    description = fields.String()
+    genre = fields.List()
+    description = fields.String()
+    price = fields.Decimal()
+    date = fields.Date()
+
+
+book_schema : BookSchema = BookSchema()
+books_schema : BookSchema = BookSchema(many=True)

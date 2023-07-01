@@ -1,4 +1,5 @@
-from App.app import DB
+from App.app import DB, MALLOW
+from marshmallow import fields
 
 
 class UserModel(DB.Model):
@@ -29,3 +30,20 @@ class UserModel(DB.Model):
 
     def __repr__(self) -> str:
         return "<User %r>"%self.username
+    
+
+class UserSchema(MALLOW.Schema):
+
+    class Meta:
+        model : UserModel = UserModel
+        fields : tuple = ("id", "username", "email", "bio", "no_of_books")
+
+    id = fields.Integer()
+    username = fields.String()
+    email = fields.String()
+    bio = fields.String()
+    no_of_books = fields.Integer()
+
+
+user_schema : UserSchema = UserSchema()
+users_schema : UserSchema = UserSchema(many=True)
