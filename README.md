@@ -1,6 +1,6 @@
 # Bookstore API
 
-Welcome to the Virtual Bookstore API, a robust and user-friendly solution for managing your online bookstore. Built with Flask, Flask-SQLAlchemy, and Flask-JWT-Extended, this RESTful API seamlessly integrates with SQLite and MySQL databases, providing a versatile and scalable platform. With features like book retrieval, addition, update, deletion, user authentication, and admin privileges, the Virtual Bookstore API empowers you to efficiently manage your inventory. Experience the power and flexibility of the Virtual Bookstore API today and create an exceptional online bookstore experience.
+Welcome to the Virtual Bookstore API, a robust and user-friendly solution for managing your online bookstore. Built with Flask, Flask-SQLAlchemy, Flask-Restful, Flask-Marshmallow, Flask-Bcrypt, Flask-Cors and Flask-JWT-Extended, this RESTful API seamlessly integrates with SQLite and MySQL databases, providing a versatile and scalable platform. With features like book retrieval, addition, update, deletion, user authentication, and admin privileges, the Virtual Bookstore API empowers you to efficiently manage your inventory. Experience the power and flexibility of the Virtual Bookstore API today and create an exceptional online bookstore experience.
 
 ## Requirements
 
