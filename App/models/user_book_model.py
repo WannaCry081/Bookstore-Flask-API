@@ -10,9 +10,19 @@ class UserBookModel(DB.Model):
     user_id = DB.Column(DB.Integer, DB.ForeignKey("users.id"))
     book_id = DB.Column(DB.Integer, DB.ForeignKey("books.id"))
 
+    def __init__(self, user_id : int, book_id : int):
+        self.user_id = user_id
+        self.book_id = book_id
 
     def __repr__(self) -> str:
         return "<UserBooks %r>"%self.id
+    
+    def toObject(self):
+        return {
+            "id" : self.id,
+            "user_id" : self.user_id,
+            "book_id" : self.book_id
+        }
 
 
 class UserBookSchema(MALLOW.Schema):

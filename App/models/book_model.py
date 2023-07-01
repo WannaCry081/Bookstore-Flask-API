@@ -42,9 +42,9 @@ class BookSchema(MALLOW.Schema):
     title = fields.String()
     author = fields.String()
     description = fields.String()
-    genre = fields.List(cls_or_instance=fields.String())
+    genre = fields.String() 
     description = fields.String()
-    price = fields.Decimal()
+    price = fields.Number()
     date = fields.Date()
 
 
