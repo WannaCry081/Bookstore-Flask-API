@@ -1,6 +1,9 @@
 flask
+flask-restful
+flask-marshmallow
 flask-sqlalchemy
 flask-bcrypt
 flask-jwt-extended
 flask-cors
 mysqlclient
+marshmallow-sqlalchemy
