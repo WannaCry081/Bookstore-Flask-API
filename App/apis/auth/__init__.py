@@ -1,1 +1,1 @@
-from App.apis.auth.auth_api import AUTH_API
+from App.apis.auth.auth_api import *

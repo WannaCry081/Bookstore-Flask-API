@@ -29,19 +29,40 @@ def create_bookstore_app(config_class : Config = Config) -> Flask:
     CORS(my_app)
 
 
-    from App.apis.auth import AUTH_API
-    from App.apis.user import USER_API, USER_ADMIN_API
-    from App.apis.book import BOOK_API, BOOK_ADMIN_API
+    from App.apis.auth import (
+        SignInResource,
+        SignOutResource,
+        SignUpResource,
+        RefreshSignOutResource,
+        RefreshTokenResource
+    )
+    from App.apis.user import (
+        UserResource,
+        AdminUserResource
+    )
+    from App.apis.book import (
+        BookResource,
+        BookDetailResource,
+        UserBookResource,
+        AdminBookResource
+    )
 
 
-    # my_app.register_blueprint(AUTH_API, url_prefix="/api/auth/")
-    # my_app.register_blueprint(USER_API, url_prefix="/api/user/")
-    # my_app.register_blueprint(USER_ADMIN_API, url_prefix="/api/admin/user/")
-    # my_app.register_blueprint(BOOK_API, url_prefix="/api/book/")
-    # my_app.register_blueprint(BOOK_ADMIN_API, url_prefix="/api/admin/book/")
+    API.add_resource(SignInResource, "/api/auth/signin")
+    API.add_resource(SignUpResource, "/api/auth/signup")
+    API.add_resource(SignOutResource, "/api/auth/signout")
+    API.add_resource(RefreshTokenResource, "/api/auth/refresh")
+    API.add_resource(RefreshSignOutResource, "/api/auth/refresh/signout")
 
+    API.add_resource(UserResource, "/api/user/<int:user_id>")
 
+    API.add_resource(BookResource, "/api/book")
+    API.add_resource(BookDetailResource, "/api/book/<int:book_id>/<book_title>")
+    API.add_resource(UserBookResource, "api/book/user/<int:user_id>")
 
+    API.add_resource(AdminUserResource, "/api/admin/user")
+    API.add_resource(AdminBookResource, "/api/admin/book")
+    
 
     with my_app.app_context():
         DB.create_all()
