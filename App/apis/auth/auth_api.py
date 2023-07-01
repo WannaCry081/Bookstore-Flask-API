@@ -11,6 +11,7 @@ from flask_jwt_extended import (
     jwt_required,
     create_access_token,
     create_refresh_token,
+    get_jwt_identity,
     get_jwt
 )
 
@@ -107,9 +108,30 @@ class SignOutResource(Resource):
 
 
 class RefreshTokenResource(Resource):
-    pass
+    
+    @jwt_required(refresh=True)
+    def post(self):
+        access_token = get_jwt_identity()
+        user : UserModel = UserModel.query.filter_by(email = access_token).first()
+
+        if not user:
+            abort(404, message="User does not exists")
+
+        new_token = create_access_token(identity=access_token)
+        return {"access_token" : new_token}, 200
 
 
 class RefreshSignOutResource(Resource):
-    pass
 
+    @jwt_required(refresh=True)
+    def post(self):
+        try:
+            jti = get_jwt()["jti"]
+            revoked_token = TokenModel(token = jti)
+
+            DB.session.add(revoked_token)
+            DB.session.commit()
+
+            return {"message" : "Logged out successfully"}, 200
+        except Exception as e:
+            abort(500, message=e)
