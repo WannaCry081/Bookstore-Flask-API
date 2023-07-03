@@ -4,7 +4,7 @@ Welcome to the Virtual Bookstore API, a robust and user-friendly solution for ma
 
 ## Requirements
 
-- Python 3.x
+- Python 3.10.0
 - Flask
 - Flask-SQLAlchemy
 - Flask-JWT-Extended
