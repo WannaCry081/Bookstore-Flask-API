@@ -32,7 +32,6 @@ class UserModel(DB.Model):
             "bio" :self.bio
         }
     
-
     def __repr__(self) -> str:
         return "<User %r>"%self.username
     

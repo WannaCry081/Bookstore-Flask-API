@@ -11,31 +11,27 @@ from Config import (
 )
 
 
-ENVIRONMENT : str = "DEVELOPMENT"
-config = None
+ENVIRONMENT : str = "PRODUCTION"
+config = DevelopmentEnvironment()
 
-match ENVIRONMENT:
-    case "DEVELOPMENT":
-        config = DevelopmentEnvironment()
-        
+match ENVIRONMENT.upper():
     case "PRODUCTION":
         config = ProductionEnvironment()
     
-    case _:
+    case "TESTING":
         config = TestingEnvironment()
+
+    case _:
+        config = DevelopmentEnvironment()
 
 
 app : Flask = create_bookstore_app(config)
 
 if __name__ == "__main__":
 
-    # Development Environment
-    # Uncomment the line below to enable debug mode and allow access from any host
-    app.run(debug=True, host="0.0.0.0")
+    match ENVIRONMENT.upper():
+        case "PRODUCTION" : 
+            app.run()
 
-    # Production Environment
-    # app.run()
-
-
-
-    # Admin has the ID = 1
+        case _:
+            app.run(debug=True, host="0.0.0.0", port="5000")

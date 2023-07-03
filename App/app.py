@@ -17,15 +17,15 @@ MALLOW : Marshmallow = Marshmallow()
 
 def create_bookstore_app(environment) -> Flask:
 
-    my_app : Flask = Flask(__name__)
-    my_app.config.from_object(environment)
+    bookstore_app : Flask = Flask(__name__)
+    bookstore_app.config.from_object(environment)
 
-    API : Api = Api(my_app)
-    DB.init_app(my_app)
-    JWT.init_app(my_app)
-    BCRYPT.init_app(my_app)
-    MALLOW.init_app(my_app)
-    CORS(my_app)
+    API : Api = Api(bookstore_app)
+    DB.init_app(bookstore_app)
+    JWT.init_app(bookstore_app)
+    BCRYPT.init_app(bookstore_app)
+    MALLOW.init_app(bookstore_app)
+    CORS(bookstore_app)
 
 
     from App.apis.auth import (
@@ -63,11 +63,11 @@ def create_bookstore_app(environment) -> Flask:
     API.add_resource(AdminBookResource, "/api/admin/book")
     
 
-    with my_app.app_context():
+    with bookstore_app.app_context():
         DB.create_all()
         load_book_list()
 
-    return my_app
+    return bookstore_app
 
 
 def load_book_list() -> None:
