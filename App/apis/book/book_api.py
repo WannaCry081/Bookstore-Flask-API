@@ -1,4 +1,5 @@
 from App import DB
+from App.utils import jwt_is_blacklist, auth_required
 from App.models import (
     BookModel,
     UserBookModel,
@@ -41,11 +42,9 @@ class UserBookResource(Resource):
         self.parser.add_argument("title", type=str, required=True)
         
     @jwt_required()
+    @jwt_is_blacklist
+    @auth_required
     def get(self, user_id : int):
-        
-        user : UserModel = UserModel.query.filter_by(id=user_id).first()
-        if not user:
-            abort(404, message="User does not exists")
 
         book_list = []
         userBooks : UserBookModel = UserBookModel.query.filter_by(user_id = user_id).all()
@@ -55,18 +54,17 @@ class UserBookResource(Resource):
 
         return {"books" : book_list}, 200
 
+
     @jwt_required()
+    @jwt_is_blacklist
+    @auth_required
     def post(self, user_id : int):
         title = self.parser.parse_args()["title"]
 
-        user : UserModel = UserModel.query.filter_by(id=user_id).first()
-        if not user:
-            abort(404, message="User does not exists")
-
+        user : UserModel = UserModel.query.filter_by(id = user_id).first()
         book : BookModel = BookModel.query.filter_by(title=title).first()
         if not book:
             abort(404, message="Book does not exists")
-
 
         user.no_of_books = int(user.no_of_books) + 1
         userBook : UserBookModel = UserBookModel(
@@ -79,14 +77,14 @@ class UserBookResource(Resource):
 
         return {"message" : "Successfully added book"}, 200
 
+
     @jwt_required()
+    @jwt_is_blacklist
+    @auth_required
     def delete(self, user_id : int):
         title = self.parser.parse_args()["title"]
 
-        user : UserModel = UserModel.query.filter_by(id=user_id).first()
-        if not user:
-            abort(404, message="User does not exists")
-
+        user : UserModel = UserModel.query.filter_by(id = user_id).first()
         book : BookModel = BookModel.query.filter_by(title=title).first()
         if not book:
             abort(404, message="Book does not exists")

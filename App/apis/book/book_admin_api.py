@@ -1,4 +1,5 @@
 from App import DB
+from App.utils import jwt_is_blacklist, admin_required
 from App.models import (
     UserModel,
     BookModel
@@ -31,13 +32,10 @@ class AdminBookResource(Resource):
 
 
     @jwt_required()
+    @jwt_is_blacklist
+    @admin_required
     def post(self):
         data = self.post_parser.parse_args()
-        identity = get_jwt_identity()
-
-        user : UserModel = UserModel.query.filter_by(email = identity).first()
-        if user.id != 1:
-            abort(404, message="Page does not exists")
 
         book : BookModel = BookModel.query.filter_by(title = data["title"]).first()
         if book:
@@ -57,14 +55,11 @@ class AdminBookResource(Resource):
         return {"message" : "Successfully created"}, 200
      
     @jwt_required()
+    @jwt_is_blacklist
+    @admin_required
     def put(self):
         data = self.put_parser.parse_args()
-        identity = get_jwt_identity()
-
-        user : UserModel = UserModel.query.filter_by(email = identity).first()
-        if user.id != 1:
-            abort(404, message="Page does not exists")
-
+      
         book : BookModel = BookModel.query.filter_by( title = data["title"]).first()
         if not book:
             abort(404, message="Book does not exists")
@@ -80,15 +75,12 @@ class AdminBookResource(Resource):
 
 
     @jwt_required()
+    @jwt_is_blacklist
+    @admin_required
     def delete(self):
         
         data = self.delete_parser.parse_args()
-        identity = get_jwt_identity()
-
-        user : UserModel = UserModel.query.filter_by(email = identity).first()
-        if user.id != 1:
-            abort(404, message="Page does not exists")
-
+        
         book : BookModel = BookModel.query.filter_by(
             id = data["id"], title = data["title"]
         ).first()

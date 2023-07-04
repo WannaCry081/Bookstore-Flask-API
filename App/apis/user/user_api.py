@@ -1,4 +1,5 @@
 from App import DB, BCRYPT
+from App.utils import jwt_is_blacklist, auth_required
 from App.models import (
     UserModel,
     UserBookModel,
@@ -24,24 +25,22 @@ class UserResource(Resource):
         self.put_parser.add_argument("bio", type=str, required=True)
 
     @jwt_required()
+    @jwt_is_blacklist
+    @auth_required
     def get(self, user_id : int):
         user : UserModel = UserModel.query.filter_by(id = user_id).first()
-        if not user:
-            abort(404, message="User does not exists")
-
         schema = user_schema.dump(user)
         return schema, 200
 
 
     @jwt_required()
+    @jwt_is_blacklist
+    @auth_required
     def post(self, user_id : int):
         
         data = self.post_parser.parse_args()
 
         user : UserModel = UserModel.query.filter_by(id = user_id).first()
-        if not user:
-            abort(404, message="User does not exists")
-            
         if not BCRYPT.check_password_hash(user.password, data["old_password"]):
             abort(401, message="Incorrect password")
 
@@ -55,14 +54,13 @@ class UserResource(Resource):
 
 
     @jwt_required()
+    @jwt_is_blacklist
+    @auth_required
     def put(self, user_id : int):
         
         data = self.put_parser.parse_args()
         
-        user : UserModel = UserModel.query.filter_by(id = user_id).first()
-        if not user:
-            abort(404, message="User does not exists")
-       
+        user : UserModel = UserModel.query.filter_by(id = user_id).first()   
         if data["username"]:
             if len(data["username"]) < 4:
                 abort(401, message="Username must at least be 4 characters long")
@@ -76,11 +74,10 @@ class UserResource(Resource):
     
 
     @jwt_required()
+    @jwt_is_blacklist
+    @auth_required
     def delete(self, user_id : int):
-        user : UserModel = UserModel.query.filter_by(id = user_id).first()
-        if not user:
-            abort(404, message="User does not exists")
-        
+        user : UserModel = UserModel.query.filter_by(id = user_id).first()       
         userBooks : UserBookModel = UserBookModel.query.filter_by(user_id = user.id).all()
         if userBooks:
             DB.session.delete(userBooks)

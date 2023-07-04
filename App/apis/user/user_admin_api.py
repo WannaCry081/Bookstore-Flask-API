@@ -1,4 +1,5 @@
 from App import DB
+from App.utils import jwt_is_blacklist, admin_required
 from App.models import (
     UserModel, 
     users_schema
@@ -23,26 +24,20 @@ class AdminUserResource(Resource):
         self.parser.add_argument("email", type=str, required=True)
 
     @jwt_required()
+    @jwt_is_blacklist
+    @admin_required
     def get(self):
-        identity = get_jwt_identity()
-
-        user : UserModel = UserModel.query.filter_by(email = identity).first()
-        if user.id != 1:
-            abort(404, message="Page does not exists")
-
         user = UserModel.query.all()
         schema = users_schema.dump(user)
         return schema, 200
 
+
     @jwt_required()
+    @jwt_is_blacklist
+    @admin_required
     def delete(self):
         
         data = self.parser.parse_args()
-        identity = get_jwt_identity()
-
-        user : UserModel = UserModel.query.filter_by(email = identity).first()
-        if user.id != 1:
-            abort(404, message="Page does not exists")
 
         user = UserModel.query.filter_by(
             id = data["id"], email = data["email"]
