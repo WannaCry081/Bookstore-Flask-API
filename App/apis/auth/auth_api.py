@@ -2,8 +2,7 @@ from App.models import UserModel, TokenModel
 from App import BCRYPT, DB
 from App.utils import (
     isValidEmail,
-    jwt_is_blacklist,
-    auth_required
+    jwt_is_blacklist
 )
 
 from flask_restful import (

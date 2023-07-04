@@ -1,14 +1,13 @@
 from App import DB
 from App.utils import jwt_is_blacklist, admin_required
-from App.models import (
-    UserModel,
-    BookModel
-)
+from App.models import BookModel
 
-from flask_restful import Resource, reqparse, abort
-from flask_jwt_extended import (
-    jwt_required,
-    get_jwt_identity
+
+from flask_jwt_extended import jwt_required
+from flask_restful import (
+    Resource, 
+    reqparse, 
+    abort
 )
 
 

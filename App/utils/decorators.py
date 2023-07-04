@@ -1,4 +1,3 @@
-from App.utils import isValidEmail
 from App.models import TokenModel, UserModel
 from flask_restful import abort
 from flask_jwt_extended import get_jwt, get_jwt_identity
@@ -33,7 +32,7 @@ def admin_required(func):
 
         access_token = get_jwt_identity()
         user : UserModel = UserModel.query.filter_by(email = access_token).first()
-        if isValidEmail(access_token) and user.id == 1:
+        if user.id == 1:
             return func(*args, **kwargs)
         
         abort(404, message="Page does not exists")
