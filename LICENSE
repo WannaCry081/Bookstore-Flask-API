@@ -1,5 +1,7 @@
 MIT License
 
+Copyright (c) 2023 Lirae Que Data
+
 Welcome to the Virtual Bookstore API, a robust and user-friendly solution for managing your online bookstore. Built with Flask, Flask-SQLAlchemy, Flask-Restful, Flask-Marshmallow, Flask-Bcrypt, Flask-Cors, and Flask-JWT-Extended, this RESTful API seamlessly integrates with SQLite and MySQL databases, providing a versatile and scalable platform. With features like book retrieval, addition, update, deletion, user authentication, and admin privileges, the Virtual Bookstore API empowers you to efficiently manage your inventory. Experience the power and flexibility of the Virtual Bookstore API today and create an exceptional online bookstore experience.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
