@@ -1,7 +1,3 @@
-"""
-Bookstore API 
-Developed by Lirae Que Data
-"""
 from flask import Flask
 from App import create_bookstore_app
 from Config import (
@@ -11,7 +7,7 @@ from Config import (
 )
 
 
-ENVIRONMENT : str = "PRODUCTION"
+ENVIRONMENT : str = "DEVELOPMENT"
 config = DevelopmentEnvironment()
 
 match ENVIRONMENT.upper():
@@ -34,4 +30,4 @@ if __name__ == "__main__":
             app.run()
 
         case _:
-            app.run(debug=True, host="0.0.0.0", port="5000")
+            app.run(debug=True, host="0.0.0.0")

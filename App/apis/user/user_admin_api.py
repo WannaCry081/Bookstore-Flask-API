@@ -1,4 +1,4 @@
-from App.app import DB
+from App import DB
 from App.models import (
     UserModel, 
     users_schema

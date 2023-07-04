@@ -1,1 +1,1 @@
-from App.app import create_bookstore_app
+from App.app import *

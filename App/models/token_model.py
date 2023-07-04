@@ -1,4 +1,4 @@
-from App.app import DB
+from App import DB
 
 
 class TokenModel(DB.Model):

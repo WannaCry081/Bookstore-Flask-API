@@ -1,4 +1,4 @@
-from App.app import DB, MALLOW
+from App import DB, MALLOW
 from marshmallow import fields
 
 

@@ -1,4 +1,4 @@
-from App.app import DB, BCRYPT
+from App import DB, BCRYPT
 from App.models import (
     UserModel,
     UserBookModel,

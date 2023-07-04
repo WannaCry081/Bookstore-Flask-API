@@ -1,6 +1,6 @@
 from App.models import UserModel, TokenModel
-from App.app import BCRYPT, DB
-from App.utils.validity import isValidEmail
+from App.utils import isValidEmail
+from App import BCRYPT, DB
 
 from flask_restful import (
     Resource,
@@ -93,7 +93,7 @@ class SignInResource(Resource):
 
 class SignOutResource(Resource):
 
-    @jwt_required()
+    @jwt_required(optional=True)
     def post(self):
         try:
             jti = get_jwt()["jti"]
