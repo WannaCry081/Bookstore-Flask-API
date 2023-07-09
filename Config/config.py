@@ -17,7 +17,8 @@ class DevelopmentEnvironment:
     # SQLite3 Database
     SQLALCHEMY_DATABASE_URI : str = f"sqlite:///{DB_NAME}.sqlite3"
     
-    JWT_EXPIRATION_DELTA : timedelta = timedelta(days=1)
+    JWT_ACCESS_TOKEN_EXPIRATIONS : timedelta = timedelta(days=1)
+    JWT_REFRESH_TOKEN_EXPIRATIONS : timedelta = timedelta(days=30) 
 
 
 class ProductionEnvironment:
@@ -32,7 +33,8 @@ class ProductionEnvironment:
     # MySQL Database
     SQLALCHEMY_DATABASE_URI : str = f"mysql://root:data@localhost:3306/{DB_NAME}"
 
-    JWT_EXPIRATION_DELTA : timedelta = timedelta(days=1)
+    JWT_ACCESS_TOKEN_EXPIRATIONS : timedelta = timedelta(hours=1)
+    JWT_REFRESH_TOKEN_EXPIRATIONS : timedelta = timedelta(days=1) 
 
 
 class TestingEnvironment:
